@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ChangeCharacter : MonoBehaviour
 {
-    [SerializeField] List<Sprite> spritechars;
+    [SerializeField] List<SpriteRenderer> spritechars;
     List<Color> colorchars;
 
     SpriteRenderer spritechar;
@@ -24,10 +24,7 @@ public class ChangeCharacter : MonoBehaviour
     }
     public IEnumerator ChangeChar()
     {
-        if (spritechar) 
-        {
-            spritechar.sprite = spritechars[Random.Range(0, spritechars.Count)];
-        }
+        spritechar = spritechars[Random.Range(0, spritechars.Count)];
         yield return null;
     }
     public IEnumerator ColorChar()
@@ -42,11 +39,7 @@ public class ChangeCharacter : MonoBehaviour
         colorchars.Add(blue);
         colorchars.Add(yellow);
         colorchars.Add(white);
-        if (spritechar)
-        {
-            int randomInt = Random.Range(0, colorchars.Count);
-            spritechar.material.color = colorchars[randomInt];
-        }
+        spritechar.material.color = colorchars[Random.Range(0, colorchars.Count)];
         yield return null;
     }
 }
