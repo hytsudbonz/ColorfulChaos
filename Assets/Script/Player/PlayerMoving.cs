@@ -12,14 +12,13 @@ public class PlayerMoving : MonoBehaviour
 
     private void Update()
     {
-         //MoveByKey();
-         MoveByMouse();
+         MoveByKey();
+         //MoveByMouse();
     }
     void MoveByMouse()
     {
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         pos.z = 0;
-        transform.position = pos;
         if(pos.y > 4.5f)
         {
             pos.y = 4.5f;
@@ -36,6 +35,7 @@ public class PlayerMoving : MonoBehaviour
         {
             pos.x = -10.65f;
         }
+        transform.position = pos;
     }
     void MoveByKey()
     {

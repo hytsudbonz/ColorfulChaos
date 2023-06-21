@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    [SerializeField] ChangeCharacter change;
     [SerializeField] Rigidbody2D erb;
     GameObject player;
     float espeed;
@@ -11,7 +12,9 @@ public class EnemyBehaviour : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
-        espeed = Random.Range(1f, 5f);
+        espeed = Random.Range(0.5f, 2f);
+        StartCoroutine(change.ChangeChar());
+        StartCoroutine(change.ColorChar());
     }
     private void Update()
     {
